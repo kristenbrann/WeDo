@@ -5,16 +5,17 @@ import {
   Route,
   useParams,
   Redirect
-} 
-from "react-router-dom";
+} from "react-router-dom";
 import './App.css';
+import MainPage from './MainPage.js';
+import shortid from "shortid"
 
 function App() {
   return (
     <Router basename = "/">
       <Switch>
         <Route exact path="/">
-          <About />
+          <CreateList />
         </Route>
         <Route path="/list/:id" >
           <MainPage/>
@@ -23,17 +24,11 @@ function App() {
     </Router>
   );
 
-  function About() {
-    var redirectURL = "/list/" + "12345678"
+  function CreateList() {
+    var id = shortid.generate()
+    var redirectURL = "/list/" + id
     return (
       <Redirect to={redirectURL}/>
-    )
-  }
-
-  function MainPage() {
-    let { id } = useParams();
-    return (
-      <h1>{id}</h1>
     )
   }
 }
