@@ -1,4 +1,5 @@
 import React from 'react';
+import './MainPage.css';
 
 class MainPage extends React.Component{
   constructor(props) {
@@ -25,7 +26,7 @@ class MainPage extends React.Component{
         <h1>Welcome to your todo list!</h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" value={this.state.value} onChange={this.handleChange} />
-          <input type="submit" value="Add a WeDo" />
+          <input id="addTask" type="submit" value="Add a WeDo" />
         </form>
       </div>
     );
