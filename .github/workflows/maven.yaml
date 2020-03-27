@@ -14,5 +14,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - run: cd server
-    - run: mvn install
+    - name: Build the app
+      run: mvn install
+      working-directory: server/
