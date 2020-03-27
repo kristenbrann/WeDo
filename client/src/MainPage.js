@@ -21,25 +21,27 @@ const defaultTasks = [
   },
 ];
 
+const defaultListTitle = "Welcome to your todo list!"
+
 const saveList = (listId, listName) => {
   axios.post('http://localhost:8080/v1/lists', {
-    list_id: listId.id,
+    list_id: listId,
     list_name: listName
   })
-  .then(function (response) {
-    console.log(response);
-  })
   .catch(function (error) {
+    console.warn("Trouble persisting the list")
     console.log(error);
   });
 }
 
 const MainPage = () => {
-  saveList(useParams(),"Hello");
-
   const [tasks, setTasks] = useState(defaultTasks);
+  const listTitle = useState(defaultListTitle)
   const [newTask, setNewTask] = useState('');
   const inputEl = useRef(null);
+  let listId = useParams().id
+
+  saveList(listId,listTitle[0]);
 
   /**
    * Managing the value of the new task input
@@ -78,7 +80,7 @@ const MainPage = () => {
 
   return (
       <div>
-        <h1>Welcome to your todo list!</h1>
+        <h1>{listTitle}</h1>
         {tasks.map(t => (
             <div className="task">
               <p className="title">{t.description}</p>
