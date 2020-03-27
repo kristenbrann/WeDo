@@ -1,4 +1,9 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
+import {
+  useParams
+} from 'react-router-dom'
+
 import './MainPage.css';
 
 const defaultTasks = [
@@ -16,7 +21,22 @@ const defaultTasks = [
   },
 ];
 
+const saveList = (listId, listName) => {
+  axios.post('http://localhost:8080/v1/lists', {
+    list_id: listId.id,
+    list_name: listName
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
 const MainPage = () => {
+  saveList(useParams(),"Hello");
+
   const [tasks, setTasks] = useState(defaultTasks);
   const [newTask, setNewTask] = useState('');
   const inputEl = useRef(null);
