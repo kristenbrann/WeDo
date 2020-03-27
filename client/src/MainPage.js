@@ -29,7 +29,7 @@ const saveList = (listId, listName) => {
     list_name: listName
   })
   .catch(function (error) {
-    console.warn("Trouble persisting the list")
+    console.warn("Trouble saving the list")
     console.log(error);
   });
 }
