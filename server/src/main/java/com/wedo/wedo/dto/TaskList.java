@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class ListDto {
+public class TaskList {
 
     @JsonProperty("list_id")
     @Id
@@ -36,9 +36,9 @@ public class ListDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ListDto listDto = (ListDto) o;
-        return Objects.equals(listId, listDto.listId) &&
-                Objects.equals(listName, listDto.listName);
+        TaskList taskList = (TaskList) o;
+        return Objects.equals(listId, taskList.listId) &&
+                Objects.equals(listName, taskList.listName);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ListDto {
 
     @Override
     public String toString() {
-        return "ListDto{" +
+        return "TaskList{" +
                 "listId='" + listId + '\'' +
                 ", listName='" + listName + '\'' +
                 '}';
