@@ -2,11 +2,15 @@ package com.wedo.wedo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class ListDto {
 
     @JsonProperty("list_id")
+    @Id
     private String listId;
 
     @JsonProperty("list_name")

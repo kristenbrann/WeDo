@@ -2,6 +2,7 @@ package com.wedo.wedo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
 import java.util.Objects;
 
 public class TaskDto {
