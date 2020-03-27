@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import MainPage from './MainPage.js';
-import shortid from "shortid"
+import shortid from "shortid";
 
 function App() {
   return (
@@ -25,8 +25,8 @@ function App() {
   );
 
   function CreateList() {
-    var id = shortid.generate()
-    var redirectURL = "/list/" + id
+    var id = shortid.generate();
+    var redirectURL = "/list/" + id;
     return (
       <Redirect to={redirectURL}/>
     )
