@@ -3,9 +3,19 @@ package com.wedo.wedo.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Entity;
-import java.util.Objects;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.util.UUID;
 
-public class TaskDto {
+@Entity
+public class Task {
+    @Id
+    @GeneratedValue( strategy = GenerationType.AUTO )
+    private UUID id;
 
     @JsonProperty("task_description")
     private String taskDescription;
@@ -18,22 +28,19 @@ public class TaskDto {
         this.taskDescription = taskDescription;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TaskDto taskDto = (TaskDto) o;
-        return Objects.equals(taskDescription, taskDto.taskDescription);
+    public UUID getId() {
+        return id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(taskDescription);
+    public Task setId(UUID id) {
+        this.id = id;
+        return this;
     }
 
     @Override
     public String toString() {
         return "TaskDto{" +
+                "id='" + id + '\'' +
                 "taskDescription='" + taskDescription + '\'' +
                 '}';
     }
