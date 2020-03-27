@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+  Redirect
+} from "react-router-dom";
 import './App.css';
+import MainPage from './MainPage.js';
+import shortid from "shortid";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router basename = "/">
+      <Switch>
+        <Route exact path="/">
+          <CreateList />
+        </Route>
+        <Route path="/list/:id" >
+          <MainPage/>
+        </Route>
+      </Switch>
+    </Router>
   );
+
+  function CreateList() {
+    var id = shortid.generate();
+    var redirectURL = "/list/" + id;
+    return (
+      <Redirect to={redirectURL}/>
+    )
+  }
 }
 
 export default App;
