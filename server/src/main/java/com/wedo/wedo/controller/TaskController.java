@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TaskController {
 
     @PostMapping("/v1/tasks")
-    TaskDto newEmployee(@RequestBody TaskDto taskDto) {
+    TaskDto newTask(@RequestBody TaskDto taskDto) {
         return taskDto;
     }
 }
