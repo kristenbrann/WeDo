@@ -20,7 +20,6 @@ const defaultTasks = [
     description: 'Water the plants',
   },
 ];
-
 const defaultListTitle = "Welcome to your todo list!"
 
 const saveList = (listId, listName) => {
